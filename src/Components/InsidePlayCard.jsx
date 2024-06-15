@@ -32,7 +32,7 @@ const InsidePlayCard = ({ data, isOwner, playId }) => {
       setPlay((item)=>item.map((p)=>{
           if(p._id===playId){
               // console.log('push');
-              p.movies=p.movies.filter((m)=> m.imdbID !== data.imdbID);
+              p.recipe=p.recipe.filter((m)=> m.imdbID !== data.imdbID);
           }
           return p;
         }))

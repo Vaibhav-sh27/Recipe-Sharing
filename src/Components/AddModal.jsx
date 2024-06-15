@@ -35,7 +35,7 @@ const AddModal = () => {
         item.map((p) => {
           if (p._id == i._id) {
             // console.log('push');
-            p.movies = [...p.movies, playItem];
+            p.recipe = [...p.recipe, playItem];
           }
           return p;
         })

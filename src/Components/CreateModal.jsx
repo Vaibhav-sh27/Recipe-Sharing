@@ -29,7 +29,7 @@ const CreateModal = () => {
           name: name.current.value,
           access: access.current.value,
           owner: currUser.email,
-          movies:[],
+          recipe:[],
       }
       let res = await axios.post(`${import.meta.env.VITE_BAPI_URL}/playlist/${currUser._id}/add`, playObj)
       console.log(res.data);

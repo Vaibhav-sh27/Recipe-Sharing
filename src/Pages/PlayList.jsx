@@ -112,9 +112,9 @@ const PlayList = () => {
           </div>
         </div>
       </div>
-{currPlay.movies && currPlay.movies.length>0 ? 
+{currPlay.recipe && currPlay.recipe.length>0 ? 
   <div className={styles.playcont}>
-        {currPlay.movies && currPlay.movies.map((item) => {
+        {currPlay.recipe && currPlay.recipe.map((item) => {
             return (
               <InsidePlayCard
                 data={item}
