@@ -17,11 +17,11 @@ const Sidebar = () => {
         </Link>
         <Link to="/publicplay" className={styles.option}>
         <i class="fas fa-arrow-trend-up"></i>
-          <h5>PublicPlay</h5>
+          <h5>Discover</h5>
         </Link>
         <Link to="/playlists" className={styles.option}>
           <i className="fas fa-circle-play"></i>
-          <h5>Playlists</h5>
+          <h5>Recipes</h5>
         </Link>
       </div>
 

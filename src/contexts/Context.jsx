@@ -8,11 +8,12 @@ export const ContextProvider=({children})=>{
     const [playItem, setPlayItem] = useState("");
     const [show, setShow] = useState(false);
     const [showEdit, setShowEdit] = useState("");
+    const [showAdd, setShowAdd] = useState("");
     const [edit, setEdit] = useState(false);
     const [alert, setAlert] = useState("");
 
     return( 
-        <Context.Provider value={{array, setArr, show, setShow, alert, setAlert, play, setPlay, playItem, setPlayItem, edit, setEdit, showEdit, setShowEdit}}>
+        <Context.Provider value={{array, setArr, show, setShow, alert, setAlert, play, setPlay, playItem, setPlayItem, edit, setEdit, showEdit, setShowEdit, showAdd, setShowAdd}}>
             {children}
         </Context.Provider>
     )

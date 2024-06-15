@@ -9,9 +9,10 @@ import axios from "axios";
 import AlertModal from "../Components/AlertModal";
 import { useAuth } from "../contexts/AuthContext";
 import UpdateModal from "../Components/UpdateModal";
+import CreateRecipe from "../Components/CreateRecipe";
 
 const PlayList = () => {
-  let { play, setShow, setAlert, setPlay, setShowEdit, setEdit } = useContext(Context);
+  let { play, setShow, setAlert, setPlay, setShowEdit, setEdit, showAdd, setShowAdd } = useContext(Context);
   const { token, currUser, setUser } = useAuth();
   let id = useParams().id;
   let [currPlay, setCurrPlay] = useState("");
@@ -56,6 +57,7 @@ const PlayList = () => {
     <div>
       <AlertModal />
       <UpdateModal/>
+      <CreateRecipe/>
       <div className={styles.nav}>
         <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
           <div onClick={() => navigate(-1)} className={styles.back}>
@@ -65,13 +67,22 @@ const PlayList = () => {
             <i className="fas fa-circle-play"></i> {currPlay.name}
           </h1>
         </div>
-        <h2>
+        {/* <h2>
           {currPlay.access} PlayList
-        </h2>
+        </h2> */}
         <div style={{ display: "flex", justifyContent: "space-between" }}>
           <div>
             {currPlay.owner === currUser.email ? (
               <div style={{display:'flex', justifyContent:'space-between'}}>
+              <div
+                onClick={() => {
+                  setShowAdd(true);
+                }}
+                className={styles.option}
+              >
+                <i className="fas fa-add"></i>
+                <h5>Add</h5>
+              </div>
               <div
                 onClick={() => {
                   handleDelete()
@@ -101,9 +112,9 @@ const PlayList = () => {
           </div>
         </div>
       </div>
-{currPlay.movies && currPlay.movies.length>0 ? 
+{currPlay.recipe && currPlay.recipe.length>0 ? 
   <div className={styles.playcont}>
-        {currPlay.movies && currPlay.movies.map((item) => {
+        {currPlay.recipe && currPlay.recipe.map((item) => {
             return (
               <InsidePlayCard
                 data={item}

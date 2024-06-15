@@ -16,12 +16,12 @@ import {
 import axios from 'axios';
 import { useAuth } from '../contexts/AuthContext';
 
-const CreateModal = () => {
-    const {show, setShow, play, setPlay} = useContext(Context);
+const CreateRecipe = () => {
+    const {show, setShow, play, setPlay,showAdd, setShowAdd} = useContext(Context);
     const {currUser,setUser} = useAuth();
     let name = useRef();
     let access= useRef();
-    const handleClose = () => setShow(false);
+    const handleClose = () => setShowAdd(false);
 
     async function handleCreate() {
       if(name.current.value.trim()){
@@ -40,11 +40,11 @@ const CreateModal = () => {
     }
   return (
     <div>
-        <MDBModal open={show} onClose={handleClose} tabIndex='-1' >
+        <MDBModal open={showAdd} onClose={handleClose} tabIndex='-1' >
         <MDBModalDialog >
           <MDBModalContent>
             <MDBModalHeader>
-              <MDBModalTitle >Create PlayList</MDBModalTitle>
+              <MDBModalTitle >Create Recipe</MDBModalTitle>
             </MDBModalHeader>
             <MDBModalBody>
             <MDBInput label="PlayList Name" id="typeText" type="text" ref={name} />
@@ -79,4 +79,4 @@ const CreateModal = () => {
   )
 }
 
-export default CreateModal
+export default CreateRecipe

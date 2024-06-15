@@ -12,7 +12,7 @@ const Playlist = () => {
     <CreateModal/>
         <div>
             <div className={styles.nav}>
-                <h1>Your PlayLists</h1>
+                <h1>Your Recipes</h1>
                 <div style={{display:'flex', justifyContent:'space-between'}}>
                 <div>
                 <div onClick={()=>{setShow(true)}} className={styles.option}>

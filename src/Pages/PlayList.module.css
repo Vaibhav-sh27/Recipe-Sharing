@@ -42,8 +42,10 @@
 }
 
 .option:hover{
-    background-color: #3dd2cd58;
-    color: #3DD2CC !important;
+    /* background-color: #3dd2cd58;
+    color: #3DD2CC !important; */
+    background-color: #f6a7a6;
+    color: white !important;
     width: 100%;
 }
 
@@ -201,7 +203,7 @@
 
   .back{
     font-size: 40px;
-    color:#3DD2CC;
+    color:#f6a7a6;
     cursor: pointer;
     
   }
