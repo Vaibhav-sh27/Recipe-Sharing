@@ -1,0 +1,186 @@
+.content{
+    padding: 5px 35px;
+}
+
+p, h3{
+    margin-bottom: 0;
+}
+
+
+.nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 10px;
+}
+
+.content h1{
+    font-weight: 600;
+}
+
+.option{
+    display: flex;
+    justify-content: stretch;
+    align-items: center;
+    padding: 10px 20px;
+    color: #666666;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.option h5{
+    margin-bottom: 0;
+    padding-left: 10px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.option:hover{
+    background-color: #3dd2cd58;
+    color: #3DD2CC !important;
+    width: 100%;
+}
+
+.avtar{
+    border-radius: 25px;
+    height: 50px;
+    width: 50px;
+    background-color: aliceblue;
+}
+.avtar img{
+    height: 50px;
+    width: 50px;
+    border-radius: 25px;
+}
+
+.detailscont{
+    margin-top: 2rem;
+}
+
+.trailer{
+    width: 100%;
+    height: 65vh;
+    border-radius: 25px;
+}
+
+.details{
+    color: #E8E8E8;
+    margin-top: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+
+    display: flex;
+    justify-content:space-between;
+    align-items: center;
+}
+
+.leftdet{
+    width: 55vw;
+}
+
+.details h3{
+    font-weight: 600;
+    display: inline-block;
+}
+
+.plot{
+    margin-top: 1.5rem;
+}
+
+.specs{
+    margin-top: 1.5rem;
+}
+
+.director, .writers, .stars, .toprated{
+    border-top: 2px solid #e8e8e831;
+    padding: 10px 4px;
+}
+
+.tprbtn{
+    background-color: #3dd2cda9;
+    color: #ffffff;
+    padding: 6px 14px;
+    width:fit-content;
+    border-radius: 10px;
+}
+
+.cardcont{
+    display: inline-block;
+}
+
+.card {
+    width: 280px;
+    height: 360px;
+    border-radius: 15px;
+    padding: 1.5rem;
+    background: white;
+    position: relative;
+    box-shadow: 0px 7px 10px rgba(0, 0, 0, 0.5);
+    margin-left: 25px;
+  }
+
+  .star{
+    width: 78px;
+    height: 32px;
+    padding: 1px 1px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    background: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    color: white;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+
+  .card img {
+    width: 100%;
+    height: 100%;
+    -o-object-fit: cover;
+       object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 15px;
+  }
+
+  .info button {
+    padding: 0.6rem;
+    outline: none;
+    border: none;
+    border-radius: 3px;
+    background: white;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.4s ease;
+  }
+  .info button:hover {
+    background: #329895;
+    color: white;
+  }
+
+  .back{
+    font-size: 40px;
+    color:#3DD2CC;
+    cursor: pointer;
+    
+  }
+
+  .back:hover{
+    transform: scale(1.3);
+    transition: ease-in 0.2s;
+  }
+
+
+
+
+
+
+
