@@ -15,6 +15,10 @@
   justify-content: space-evenly;
   flex-direction: column;
 }
+.sidebar img{
+  height: 8em;
+  border-radius: 50%;
+}
 .option {
   display: flex;
   justify-content: stretch;

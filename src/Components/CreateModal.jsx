@@ -44,10 +44,10 @@ const CreateModal = () => {
         <MDBModalDialog >
           <MDBModalContent>
             <MDBModalHeader>
-              <MDBModalTitle >Create PlayList</MDBModalTitle>
+              <MDBModalTitle >Create Recipe List</MDBModalTitle>
             </MDBModalHeader>
             <MDBModalBody>
-            <MDBInput label="PlayList Name" id="typeText" type="text" ref={name} />
+            <MDBInput label=" Recipe List Name" id="typeText" type="text" ref={name} />
             <div className='mb-2' style={{display:"flex", justifyContent:'space-between', padding:'5px 5px', marginTop:'10px'}}>
           <label htmlFor="gender" style={{fontSize:'20px'}}>Access</label>
           <select style={{width:"70%"}} data-mdb-select-init ref={access}>

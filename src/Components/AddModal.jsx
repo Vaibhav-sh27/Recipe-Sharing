@@ -52,7 +52,7 @@ const AddModal = () => {
         <MDBModalDialog>
           <MDBModalContent>
             <MDBModalHeader>
-              <MDBModalTitle>Choose PlayList</MDBModalTitle>
+              <MDBModalTitle>Choose Recipe List</MDBModalTitle>
             </MDBModalHeader>
             <MDBModalBody>
               {play.length > 0 ? (
@@ -92,7 +92,7 @@ const AddModal = () => {
                   }}
                 >
                   <h3 style={{ margin: 0, fontWeight: "600" }}>
-                    <i className="fas fa-circle-play"></i> &nbsp; No PlayList
+                    <i className="fas fa-circle-play"></i> &nbsp; No Recipe List
                     Found!{" "}
                   </h3>
                 </div>
@@ -108,7 +108,7 @@ const AddModal = () => {
                   handleClose();
                 }}
               >
-                Create New PlayList
+                Create New Recipe List
               </MDBBtn>
               <MDBBtn
                 className="mb-3"
