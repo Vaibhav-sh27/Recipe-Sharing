@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./Sidebar.module.css";
-import logo from "../assets/logo.svg";
+import logo from "../assets/foodlogo.jpg";
 import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
