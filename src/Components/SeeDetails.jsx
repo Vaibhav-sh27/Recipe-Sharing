@@ -1,75 +1,102 @@
 import React, { useContext, useEffect, useState } from "react";
 import styles from "./SeeDetails.module.css";
-import avatar from "../assets/avatar.jpeg"
+import avatar from "../assets/avatar.jpeg";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import playback from "../assets/playback.jpg"
-import season from "../assets/video.png"
+import playback from "../assets/playback.jpg";
+import season from "../assets/video.png";
 import Tags from "./Tags";
-import ReactPlayer from 'react-player'; 
-import movieTrailer from 'movie-trailer'; 
+import ReactPlayer from "react-player";
+import movieTrailer from "movie-trailer";
 import { Context } from "../contexts/Context";
 import AddModal from "./AddModal";
-
+import youtubeThumbnail from "youtube-thumbnail";
 
 const SeeDetails = () => {
+  let { setPlayItem, setShow } = useContext(Context);
 
-    let {setPlayItem, setShow}=useContext(Context);
-    let id = useParams().id;
-    let [movie, setMovie]=useState("");
-    let [data, setData]=useState("");
-    const navigate = useNavigate();
-    
+  let id = useParams().id;
+  let [movie, setMovie] = useState("");
+  let [data, setData] = useState("");
+  const navigate = useNavigate();
 
-    useEffect(()=>{
-        async function getData() {
-            await axios
-              .get(`${import.meta.env.VITE_MAPI_URL}&i=${id}`)
-              .then((res) => {
-                setMovie(res.data);
-                setData({
-                  Title: res.data.Title,
-                  Year: res.data.Year,
-                  imdbID: res.data.imdbID,
-                  Type: res.data.Type,
-                  Poster: res.data.Poster
-                })
-                // console.log(res);
-              })
-              .catch((error) => {
-                console.log(error);
-              });
-              
-        }
-        getData();
-    },[])
+  useEffect(() => {
+    async function getData() {
+      await axios
+        .get(`${import.meta.env.VITE_IDAPI_URL}?i=${id}`)
+        .then((res) => {
+          // setMovie(res.data);
 
+          console.log(res.data.meals[0]);
+          let pp = res.data.meals[0];
+          var thumbnail = youtubeThumbnail(res.data.meals[0].strYoutube);
+          console.log(thumbnail.high.url);
+          setMovie({  
+            Title: pp.strMeal,
+            inst: pp.strInstructions,
+            Year: res.data.Year,
+            imdbID: res.data.imdbID,
+            Type: res.data.Type,
+            Poster: res.data.Poster,
+          });
+          setData({
+            Title: res.data.Title,
+            Year: res.data.Year,
+            imdbID: res.data.imdbID,
+            Type: res.data.Type,
+            Poster: res.data.Poster,
+          });
+          // console.log(res);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+    getData();
+  }, []);
 
-    const time = (minutes) => {
-        const hours = Math.floor(minutes / 60);
-        const remainingMinutes = minutes % 60;
-        return `${hours}h ${remainingMinutes < 10 ? '0' : ''}${remainingMinutes}m`;
-    };
+  const time = (minutes) => {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return `${hours}h ${remainingMinutes < 10 ? "0" : ""}${remainingMinutes}m`;
+  };
 
   return (
     <div className={styles.content}>
-    <AddModal/>
+      <AddModal />
       <div className={styles.nav}>
-        <div style={{display: 'flex', justifyContent:'space-between', alignItems:'center'}}>
-        <div onClick={() => navigate(-1)} className={styles.back}>
-          <i class="fas fa-circle-left"></i>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div onClick={() => navigate(-1)} className={styles.back}>
+            <i class="fas fa-circle-left"></i>
+          </div>
+          <h1 style={{ margin: "0px 25px" }}>
+            <i class="fas fa-cutlery"></i> &nbsp; {movie.Title}
+          </h1>
         </div>
-        <h1 style={{margin:'0px 25px'}}>
-          <i class="fas fa-film"></i> &nbsp; {movie.Title}
-        </h1>
-        </div>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems:'center' }}>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           <div className={styles.info}>
-              <button style={{marginLeft:'30px', marginRight:'20px'}} onClick={async ()=>{
-              // console.log(data);
+            <button
+              style={{ marginLeft: "30px", marginRight: "20px" }}
+              onClick={async () => {
+                // console.log(data);
                 await setPlayItem(data);
                 setShow(true);
-              }}>+Add to PlayList</button>
+              }}
+            >
+              +Add to PlayList
+            </button>
           </div>
           <div className={styles.avtar} style={{ marginLeft: "15px" }}>
             <img src={avatar} alt="" />
@@ -79,22 +106,32 @@ const SeeDetails = () => {
 
       <div className={styles.detailscont}>
         <div className={styles.trailer}>
-           <Player name={movie.Title+""} year={movie.Year} type={movie.Type} />
+          <Player name={movie.Title + ""} year={movie.Year} type={movie.Type} />
         </div>
         <div className={styles.details}>
           <div className={styles.leftdet}>
             <div>
               <h3>
-                {movie.Title} &nbsp;• &nbsp;{movie.Year} &nbsp;• &nbsp;
-                {movie.Rated} &nbsp;• &nbsp;{time(movie.Runtime?.slice(0, 3))}
+                {movie.Title}
+                {/* &nbsp;• &nbsp;{movie.Year} &nbsp;• &nbsp; */}
+                {/* {movie.Rated} &nbsp;• &nbsp;{time(movie.Runtime?.slice(0, 3))} */}
               </h3>
+              <h5>{movie.inst}</h5>
               <div style={{ marginTop: "1rem" }}>
                 {movie.Genre?.split(",").map((tag) => {
                   return <Tags tagName={tag.trim()} />;
                 })}
               </div>
-              <div style={{ marginTop: "1rem" , marginLeft:'5px'}}>
-                <h4><img style={{height:'40px'}} src={season} alt="" />&nbsp;{movie.Type==="series"? <i>{movie.totalSeasons} Seasons</i> : <i>Movie</i>}</h4>
+              <div style={{ marginTop: "1rem", marginLeft: "5px" }}>
+                {/* <h4>
+                  <img style={{ height: "40px" }} src={season} alt="" />
+                  &nbsp;
+                  {movie.Type === "series" ? (
+                    <i>{movie.totalSeasons} Seasons</i>
+                  ) : (
+                    <i>Movie</i>
+                  )}
+                </h4> */}
               </div>
             </div>
             <div className={styles.plot}>
@@ -103,26 +140,26 @@ const SeeDetails = () => {
             <div className={styles.specs}>
               <div className={styles.director}>
                 <p>
-                  Director :{" "}
+                  {/* Director :{" "} */}
                   <span style={{ color: "#3DD2CC" }}>{movie.Director}</span>
                 </p>
               </div>
               <div className={styles.writers}>
                 <p>
-                  Writers :{" "}
+                  {/* Writers :{" "} */}
                   <span style={{ color: "#3DD2CC" }}>{movie.Writer}</span>
                 </p>
               </div>
               <div className={styles.stars}>
                 <p>
-                  Stars :{" "}
+                  {/* Stars :{" "} */}
                   <span style={{ color: "#3DD2CC" }}>{movie.Actors}</span>
                 </p>
               </div>
               <div className={styles.toprated}>
                 {" "}
                 <div className={styles.tprbtn}>
-                  Top rated movie # {movie.Metascore}
+                  {/* Top rated movie # {movie.Metascore} */}
                 </div>
               </div>
             </div>
@@ -139,24 +176,31 @@ const SeeDetails = () => {
   );
 };
 
+const Player = ({ name, year, type }) => {
+  let [vurl, setVurl] = useState("");
 
-const Player = ({name, year, type}) => {
-  let [vurl, setVurl]=useState("");
+  let obj =
+    type === "series" ? { videoType: "tv", year: year } : { year: year };
 
-  let obj = type==='series'? {videoType: 'tv', year: year} : {year: year}
-
-  movieTrailer(name, obj).then((res) => { 
+  movieTrailer(name, obj).then((res) => {
     console.log(res);
-    setVurl(res); 
-  }); 
+    setVurl(res);
+  });
 
   return (
     <>
-      {vurl ? <ReactPlayer width={'100%'} height={'100%'} url={vurl} controls={true} />:
-      <img className={styles.trailer} src={playback} alt="" />}
+      {vurl ? (
+        <ReactPlayer
+          width={"100%"}
+          height={"100%"}
+          url={vurl}
+          controls={true}
+        />
+      ) : (
+        <img className={styles.trailer} src={playback} alt="" />
+      )}
     </>
-  )
-}
-
+  );
+};
 
 export default SeeDetails;
