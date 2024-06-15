@@ -1,7 +1,7 @@
 import React, { useContext, useRef } from "react";
 import styles from "./Signup.module.css";
-import signup from "../assets/signup.jpg";
-import logo from "../assets/logo.svg";
+import signup from "../assets/comicfood.jpg";
+import logo from "../assets/foodlogo.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../contexts/Context";
 import AlertModal from '../Components/AlertModal';
@@ -52,34 +52,12 @@ const Signup = () => {
     <AlertModal/>
       <div className={styles.img}>
         <img className={styles.img} src={signup} alt="" />
-        <div className={styles.overimg}>
-          <Link to="/" className={styles.logo}>
-            <img className={styles.logo} src={logo} alt="" />
-          </Link>
-          <div className={styles.text}>
-            <div className={styles.insidetext}>
-              <h1>Benefits of your free IMDb account</h1>
-
-              <h4>Personalized Recommendations</h4>
-              <p>Discover shows you'll love.</p>
-
-              <h4>Your Ratings</h4>
-              <p>Rate and remember everything you've seen.</p>
-
-              <h4>Contribute to IMDb</h4>
-              <p>
-                Add data that will be seen by millions of people and get cool
-                badges.
-              </p>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div className={styles.page}>
         <div className={styles.desc}>
-          <h1>Create an account</h1>
-          <p>Let's get started with your 30 days free trial.</p>
+          <h1>Let's get you started!</h1>
+          <p>Create an account for your 30 days free trial.</p>
 
           <div className={styles.form}>
           <input type="text" placeholder="Name" ref={nameInputRef}/>
@@ -93,7 +71,7 @@ const Signup = () => {
               Already have an account?{" "}
                 <Link
                   to="/login"
-                  style={{ color: "white", cursor: "pointer" }}
+                  style={{ color: "black", cursor: "pointer" }}
                 >
                    Log in
                 </Link>

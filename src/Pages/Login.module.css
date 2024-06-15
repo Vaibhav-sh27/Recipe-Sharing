@@ -38,10 +38,10 @@
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-    height: 20vw;
+    height: 14rem;
 }
 .form input{
-    background-color: #e69671 !important;
+    background-color: #f6a7a6 !important;
     border: 0;
     border-bottom: 2px solid #353434;
     width: 18rem;
@@ -51,11 +51,14 @@
     border-radius: 5px;
     padding: 1rem;
 }
+::placeholder{
+    color:black
+}
 .form input:focus{
     outline: none;
 }
 .btn{
-    background-color: rgb(187, 87, 29);
+    background-color: rgb(214, 69, 124);
     width: 18rem;
     border-radius: 10px;
     display: flex;
