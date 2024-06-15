@@ -33,7 +33,9 @@
 }
 
 .option:hover {
-  background-color: #3dd2cd58;
-  color: #3dd2cc !important;
+  /* background-color: #3dd2cd58;
+  color: #FEF1F1 !important; */
+  background-color: white;
+    color: #f6a7a6 !important;
   width: 100%;
 }

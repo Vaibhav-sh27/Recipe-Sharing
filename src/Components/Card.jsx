@@ -24,7 +24,7 @@ const Card = ({ data }) => {
   // }, []);
   return (
     <div className={styles.card}>
-      <div className={styles.star}>⭐ {movie.imdbRating}</div>
+      <div className={styles.star}>⭐ {Math.floor(Math.random()*3 +7)}</div>
       {/* <img src="https://images.unsplash.com/photo-1477666250292-1419fac4c25c?auto=format&amp;fit=crop&amp;w=667&amp;q=80&amp;ixid=dW5zcGxhc2guY29tOzs7Ozs%3D"/> */}
       <img src={data.strMealThumb} alt="" />
       <div className={styles.info}>
