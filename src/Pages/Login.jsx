@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useRef } from "react";
 import styles from "./Login.module.css";
-import login from "../assets/login.jpg";
-import logo from "../assets/logo.svg";
+import login from "../assets/cartoon eating.jpg";
+import logo from "../assets/foodlogo.jpg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Context } from "../contexts/Context";
 import AlertModal from '../Components/AlertModal';
@@ -75,8 +75,9 @@ const Login = () => {
           <img src={logo} alt="" />
         </Link>
         <div className={styles.desc}>
-          <h1>Welcome Back</h1>
-          <p>Welcome back! Please enter your details.</p>
+          <h1>Welcome Back !</h1>
+          <p >Let's find you another mouth watering recipe.</p>
+          <p>Please enter your credentials.</p>
 
           <div className={styles.form}>
             <input type="email" placeholder="Email" ref={emailInputRef} />
@@ -89,7 +90,7 @@ const Login = () => {
                 Don't have an account? {" "}
                 <Link
                   to="/signup"
-                  style={{ color: "white", cursor: "pointer" }}
+                  style={{ color: "black", cursor: "pointer" }}
                 >
                   Sign up
                 </Link>
